@@ -1,0 +1,250 @@
+:root {
+    --color-primary: rgb(6, 100, 110);
+    --color-bg-light: #cccccc;
+    --color-bg-gradient-start: rgb(141, 185, 95);
+    --color-bg-gradient-end: rgb(67, 181, 194);
+    --font-main: 'Americane', Arial, sans-serif;
+    --font-size-base: 1.5625rem; /* 25px base */
+    --border-radius: 10px;
+    --button-padding: 10px;
+    --gap-row: 10px;
+    --gap-col: 20px;
+}
+
+@font-face {
+    font-family: 'Americane';
+    src: url('fonts/Americane-Light.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    font-family: var(--font-main);
+    font-size: var(--font-size-base);
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-bg-gradient-start), var(--color-bg-gradient-end));
+    background-attachment: fixed; /* optional for parallax-like effect */
+    min-height: 100vh;
+    color: #000; /* Ensure text is readable */
+}
+
+.background {
+    background-size: cover;
+    background-color: var(--color-bg-light);
+    min-height: 100vh;
+    padding-top: 4rem;
+}
+/* dit is allemaal voor de centrale clicker */
+#clicker {
+    font-size: 60px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    /* border:'0px'; */
+}
+img {
+  user-select: none;
+}
+
+.bookie {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.1s ease-in-out;
+  margin:20px;
+}
+.bookie:active {
+    transform: scale(0.9);
+}
+
+/* 
+#upgradesContainer,
+#boostsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--gap-row) var(--gap-col);
+    max-width: 100%;
+    margin: 0 auto;
+} */
+
+#shop {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+#shop.expanded {
+    max-height: 2500px;  /*dit is echt geeyeballed*/
+}
+
+.shop-section {
+    width: 100%;
+    min-width: 250px;
+    margin: 10 auto;
+}
+
+
+.upgrade,
+.boost {
+    width: 85%;
+    background: #4F8F95;
+    border: 10px;
+    padding: var(--button-padding);
+    margin: 10px auto;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    transition: transform 0.1s ease-in-out;
+}
+
+.upgrade:active,
+.boost:active,
+.site-button:active {
+  transform: scale(0.9);
+}
+
+
+#clickie {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    display: none;
+    opacity: 0;
+    transition: opacity 2s ease-out;
+}
+
+
+.site-button {
+  background: var(--color-primary);
+  border: 5px;
+  padding: var(--button-padding);
+  margin: 8px auto;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  width: 90%;
+  font-size: var(--font-size-base);
+  text-align: center;
+  display: block;
+  transition: transform 0.1s ease-in-out;
+}
+
+/* TODO: fix dat dit even breed is als de upgrades enzo */
+
+.button-row {       
+    display: flex;
+    width:100%;
+    margin: 0 auto 5pxpx auto;
+    gap: "8px";
+    flex-wrap: wrap;
+
+    /* justify-content: center;
+    margin-bottom: 20px; */
+    
+}
+
+/* highscores layout */
+#highscoreList {
+  list-style-type: none;   /* goofy ahh bullet points */
+  padding-left: 0;
+}
+
+/* all overlay displays  */
+.overlay {
+    position: fixed;
+    display: none; /* Hidden by default */
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    overflow-y: auto;
+}
+.overlay-content {
+    background-color: white;
+    color: black;
+    padding: 20px;
+    overflow-y: auto;
+    width: 80%;
+    max-width: 600px;
+    margin: 100px auto;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* flying bookies */
+#falling-books-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* So it doesn’t block clicks */
+    z-index: -1;
+    overflow: hidden;
+    }
+
+.book {
+    background-image: url("images/Tekengebied 1 copy.png");
+    background-size: cover; /* Or contain, depending on the look you want */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute; /* NOT fixed, because the container is already fixed */
+    width: 50px;
+    height: 50px;
+    /* transform: rotate(15deg); */
+    pointer-events: none;
+
+    top: 0;
+    left: 0;
+
+    will-change: transform;
+    contain: layout;
+}
+
+#statusMsg {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Responsive tweaks */
+@media (max-width: 800px) {
+  .shop-section {
+    width: 100%;
+  }
+
+  #upgradesContainer,
+  #boostsContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .bookie {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 400px) {
+  body {
+    font-size: 1.25rem; /* slightly smaller font on small devices */
+  }
+  .site-button {
+    width: 100%;
+    max-width: 100%;
+  }
+}

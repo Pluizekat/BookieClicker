@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookie Clicker</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <script src="script.js"></script>
+
+    <link href="style.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <h1>Bookie Clicker</h1>
+
+    <p>Bookies geklikt: <span id="count">0</span></p>
+    <img id="clicker" class="bookie" src="images/Tekengebied 1 copy.png"
+        alt="Klik het Bookie"/>
+    <p id="clickie" style="display: none;"></p>
+    <h2>Welkom, <span id="displayUsername"></span>!</h2>
+
+    <div id="falling-books-container"></div>
+
+
+    <div id="shopWrapper">
+        <div class="button-row">
+            <button id="shopToggleBtn" class="site-button">Winkel</button>
+            <div id="shop" class="collapsed">
+                <div class="shop-section">
+                    <h2>Upgrades</h2>
+                    <div id="upgradesContainer"></div>
+                    <h2>Boosts</h2>
+                    <div id="boostsContainer"></div>
+                </div>
+            </div>
+            <button id="setUsernameButton" class="site-button">Verander gebruikersnaam</button>
+            <button onclick="toggleHelp()" class="site-button">Help</button>
+            <button id="highscores" class="site-button">Stuur highscore</button>
+            <div id="statusMsg"></div>
+            <button onclick="toggleHighscores()" class="site-button">Bekijk beste scores</button>
+        </div>
+
+    </div>
+
+
+    <div id="helpOverlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="toggleHelp()">&times;</span>
+            <h2>Help</h2>
+            <p id="helpText">
+                📖 Welkom bij BookieClicker! 🖱✨<br> 
+                📚💥 Klik je weg naar literair succes! 💰🏆<br> <br> 
+
+                🎮 HOE SPEEL JE BOOKIECLICKER? 🎮<br> <br> 
+
+                📗Klik op ons prachtige logo!<br> 
+                📚🖱 Elke klik geeft je ✨Bookies✨! Hoe sneller je klikt, hoe meer punten je verzamelt!<br> 
+                ➡ 📈 Meer klikken = meer Bookies!<br> <br> 
+
+                🏛 Koop Upgrades!<br> 
+                💼🧠 Gebruik je Bookies om coole upgrades te kopen zoals:<br> 
+                🔹 Upgrades ~ Koop leden van JaBo 66, indesign, dj🚙 of zelfs ewi en laat ze bookies voor jou maken automatisch 🤖<br> 
+                🔹 Boosts ~ Laat jouw clicks meer waard zijn, koop onze mascottes voor een hogere klikfactor⚡<br> <br> 
+
+                🏁 Doel van het spel?<br> 
+                Wees beter dan de rest! 1️⃣ Word de ultieme Bookie Tycoon 👑📚, bezitter van de grootste Jaarboek collectie ter wereld! 🏰📖🌍<br> <br> 
+
+                🤩 Klaar om te klikken? 📱💥<br> 
+                Laat die boeken maar rollen! 📚📚📚<br> 
+                Happy Clicking! 🖱💫<br> <br> 
+            </p>
+        </div>
+    </div>
+
+    <div id="highscoreOverlay" class="overlay">
+        <div class="overlay-content">
+            <span class="close-btn" onclick="toggleHighscores()">&times;</span>
+            <h2>Top 10 grootste Bookie Clickers</h2>
+        <ul id="highscoreList"></ul>
+        </div>
+    </div>
+</body>
+
+</html>
